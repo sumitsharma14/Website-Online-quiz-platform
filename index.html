@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<style>
+body {
+    padding-top:30px;
+    background-color: white;
+}
+fieldset {
+    border: thin solid #ccc; 
+    border-radius: 4px;
+    padding: 20px;
+    padding-left: 40px;
+    background: white;
+}
+div.container{ 
+width:200%
+}
+
+legend {
+   color: #678;
+}
+.form-control {
+    width: 100%;
+}
+label small {
+    color: #678 !important;
+}
+span.req {
+    color:maroon;
+    font-size: 112%;
+}
+</style>
+</head>
+<body>
+    <center><h1>ONLINE QUIZ </h1>
+    <h3>SIGN UP</h3></center>
+        <header>
+               
+                <!-- <% include ../partials/header %> -->
+            </header>
+<div class="container" style="text-align:center";width="100%";>
+	<div class="row" class="center" >
+        <div class="col-md-6">
+            <form action="" method="post" id="fileForm" role="form" align="center">
+            <fieldset><legend class="text-center">Valid information is required<span class="req"><small> required *</small></span></legend>
+
+            <div class="form-group">
+            <label for="phonenumber"><span class="req">* </span> PHONE NUMBER </label>
+             <input required type="text" name="phonenumber" id="phone" class="form-control phone" maxlength="28" onkeyup="validatephone(this);" placeholder="not used for marketing"/> 
+            <br>
+            </div>
+
+            <div class="form-group"> 	 
+                <label for="firstname"><span class="req">* </span>FULL NAME </label>
+                    <input class="form-control" type="text" name="firstname" id = "txt" onkeyup = "Validate(this)" required /> 
+                        <div id="errFirst"></div> 
+                        <br>   
+            </div>
+
+            <div class="form-group">
+                <label for="email"><span class="req">* </span> EMAIL </label> 
+                    <input class="form-control" required type="text" name="email" id = "email"  onchange="email_validate(this.value);" />   
+                        <div class="status" id="status"></div>
+                        <br>
+            </div>
+
+           
+            <div class="form-group">
+                <label>* DEPARTMENT</label><br/>
+                <select data-style="btn-info" name="department" class="form-control">
+                    <optgroup label="select department">
+                      <option value="COMPUTER SCIENCE">COMPUTER SCIENCE</option>
+                        <option value="CIVIL">CIVIL</option>
+                      <option value="ELECTRONICS">ELECTRONICS</option>
+                    </optgroup>
+                </select>
+                <br>
+        </div>
+
+            <div class="form-group">
+                <label for="password"><span class="req">* </span> PASSWORD </label>
+                    <input required name="password" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="pass1" /> </p>
+
+                <label for="password"><span class="req">* </span>CONFIRM PASSWORD </label>
+                    <input required name="password1" type="password" class="form-control inputpass" minlength="4" maxlength="16" placeholder="Enter again to validate"  id="pass2" onkeyup="checkPass(); return false;" />
+                        <span id="confirmMessage" class="confirmMessage"></span>
+                        <br>
+            </div>
+
+            <div class="form-group">
+                    <label>* Role</label><br/>
+                    <select data-style="btn-info" name="roleoptions" class="form-control">
+                        <optgroup label="Select User Role">
+                          <option value="STUDENT">STUDENT</option>
+                            <option value="TEACHER">TEACHER</option>
+                        </optgroup>
+                    </select>
+                    <br>
+            </div>
+
+            <div class="form-group">
+                <input class="btn btn-success" type="submit"  >
+            </div>
+           
+         </fieldset>
+            </form><!-- ends register form -->
+            <br>
+            <b> <h4>ALREADY A MEMBER ?</h4></b>
+             <form method="post" action="/login">
+                 <button class="btn btn-success">LOGIN</button>
+             </form>
+         </div>
+     </div>
+    </center>
+</div>
+<script type="text/javascript">
+    function checkPass()
+    {
+        //Store the password field objects into variables ...
+        var pass1 = document.getElementById('pass1');
+        var pass2 = document.getElementById('pass2');
+        //Store the Confimation Message Object ...
+        var message = document.getElementById('confirmMessage');
+        //Set the colors we will be using ...
+        var goodColor = "#66cc66";
+        var badColor = "#ff6666";
+        //Compare the values in the password field 
+        //and the confirmation field
+        if(pass1.value == pass2.value){
+            //The passwords match. 
+            //Set the color to the good color and inform
+            //the user that they have entered the correct password 
+            pass2.style.backgroundColor = goodColor;
+            message.style.color = goodColor;
+            message.innerHTML = "Passwords Match"
+        }else{
+            //The passwords do not match.
+            //Set the color to the bad color and
+            //notify the user.
+            pass2.style.backgroundColor = badColor;
+            message.style.color = badColor;
+            message.innerHTML = "Passwords Do Not Match!"
+        }
+    } 
+    function validatephone(phone) 
+    {
+        var maintainplus = '';
+        var numval = phone.value
+        if ( numval.charAt(0)=='+' )
+        {
+            var maintainplus = '';
+        }
+        curphonevar = numval.replace(/[\\A-Za-z!"£$%^&\,*+_={};:'@#~,.Š\/<>?|`¬\]\[]/g,'');
+        phone.value = maintainplus + curphonevar;
+        var maintainplus = '';
+        phone.focus;
+    }
+    // validates text only
+    function Validate(txt) {
+        txt.value = txt.value.replace(/[^a-zA-Z-'\n\r.]+/g, '');
+    }
+    // validate email
+    function email_validate(email)
+    {
+    var regMail = /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
+    
+        if(regMail.test(email) == false)
+        {
+        document.getElementById("status").innerHTML    = "<span class='warning'>Email address is not valid yet.</span>";
+        }
+        else
+        {
+        document.getElementById("status").innerHTML	= "<span class='valid'>Thanks, you have entered a valid Email address!</span>";	
+        }
+    }
+    // validate date of birth
+    function dob_validate(dob)
+    {
+    var regDOB = /^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})$/;
+    
+        if(regDOB.test(dob) == false)
+        {
+        document.getElementById("statusDOB").innerHTML	= "<span class='warning'>DOB is only used to verify your age.</span>";
+        }
+        else
+        {
+        document.getElementById("statusDOB").innerHTML	= "<span class='valid'>Thanks, you have entered a valid DOB!</span>";	
+        }
+    }
+    // validate address
+    function add_validate(address)
+    {
+    var regAdd = /^(?=.*\d)[a-zA-Z\s\d\/]+$/;
+      
+        if(regAdd.test(address) == false)
+        {
+        document.getElementById("statusAdd").innerHTML	= "<span class='warning'>Address is not valid yet.</span>";
+        }
+        else
+        {
+        document.getElementById("statusAdd").innerHTML	= "<span class='valid'>Thanks, Address looks valid!</span>";	
+        }
+    }
+    
+    </script>
+            </div><!-- ends col-6 -->
+        </div>
+    </div>
+    <footer>
+          
+        </footer>
+    </body>
+    </html>
