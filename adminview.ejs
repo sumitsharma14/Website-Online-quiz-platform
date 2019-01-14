@@ -1,0 +1,27 @@
+<html>
+    <body>
+      <center>  <h1> ADMIN DATA</h1>
+       <table bgcolor="#00FF00" width="100%">
+           <tr>
+               <th>phone</th> 
+    <h1><th>name</th>
+    <th>email</th>
+    <th>department</th>
+    <th>password</th>
+    <th>role</th>
+           </tr>
+           <%admins.forEach(function(admin){%>
+            <tr>
+                <td><%=admin.phone%></td>
+                <td><%=admin.name%></td>
+                <td><%=admin.email%></td>
+                <td><%=admin.department%></td>
+                <td><%=admin.password%></td>
+                <td><%=admin.role%></td>
+            </tr>
+            <%});%></h1>
+       </table>
+       </center>
+       
+    </body>
+</html>

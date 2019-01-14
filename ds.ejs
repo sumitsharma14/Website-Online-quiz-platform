@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+        <center> <h1>APC QUESTIONS</h1>
+        <body>
+       
+       <table bgcolor="yellow" width="100%">
+           <tr>
+               <th>QNo</th>
+               <th>Qname</th>
+               <th>Answer</th>
+           </tr>
+           <%dusers.forEach(function(duser){%>
+            <tr>
+                <td><%=duser.Qno%></td>
+                <td><%=duser.Qname%></td>
+                 <!--   <td><%=duser.ans%></td>-->
+             <td><input type="text" id="<%=duser.Qno%>" required ></td>
+            <td> <button  onclick="check('<%=duser.ans%>','<%=duser.Qno%>')">Submit</button></td>
+            </tr>
+            <%})%>
+       </table>
+       <script type="text/javascript">
+        function check(x,id)
+        {
+            var goodColor = "#66cc66";
+        var badColor = "#ff6666";
+    var x1=document.getElementById(id);
+    var x2=x1.value;
+if(x2==x)
+{
+    x1.style.backgroundColor = goodColor;
+    //alert("correctanswer");
+   
+}
+else{
+    x1.style.backgroundColor = badColor;
+   // alert("wronganswer");
+}
+        }
+        </script>
+    </center>
+    </body>
+</html>

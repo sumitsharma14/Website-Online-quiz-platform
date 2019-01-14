@@ -1,0 +1,18 @@
+<html>
+    <body>
+       <center><h2>APC QUESTIONS</h2></center>
+<center>
+        <p id="demo"></p>
+<form action="/homepage1" method="post"><ul>
+    <% users.forEach(function(user) { %>
+        <li><%=user.Qno%>------<%= user.Qname %></li>
+        <input required type="text" name="answer" id="pass1" required>
+        
+        
+    <% }); %>
+</ul>
+<button type="submit">submit</button>
+</form>
+</center>
+    </body>
+</html>

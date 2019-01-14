@@ -1,0 +1,27 @@
+<html>
+    <body>
+      <center>  <h1> STUDENTS ENROLLED</h1>
+       <table bgcolor="#00FF00" width="100%" >
+           <tr>
+               <th>phone</th> 
+    <h1><th>name</th>
+    <th>email</th>
+    <th>department</th>
+    <th>password</th>
+    <th>role</th>
+           </tr>
+           <%students.forEach(function(student){%>
+            <tr>
+                <td><%=student.phone%></td>
+                <td><%=student.name%></td>
+                <td><%=student.email%></td>
+                <td><%=student.department%></td>
+                <td><%=student.password%></td>
+                <td><%=student.role%></td>
+            </tr>
+            <%});%></h1>
+       </table>
+       </center>
+       
+    </body>
+</html>
